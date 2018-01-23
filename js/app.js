@@ -1,12 +1,19 @@
-/* 1. Selecciona todas las imagenes del DOM 
-   2. Convierte un 'HTMLCollection' en un 'Array'  */
+/* Seleccionando elementos y aplicandole propiedades */
+let encabezado;
 
-let coleccionImagenes = document .images,               // Obtengo la colección de imagenes del DOM
-    imagenesArr = Array .from( coleccionImagenes );     // Convierto la colección en un 'Array'    
+/* Obtiene el elemento por su ID */
+encabezado = document .getElementById( 'encabezado' );  
 
-console .log( 'Imagenes (Array)', imagenesArr );        // Array de elementos 'img' del DOM
+/* Imprime el contenido del elemento */
+console .log( 'Inicialmente: ', encabezado .textContent );      // 'Cursos en línea'
 
-/* Recorre cada uno de los elementos 'img' contenidos en el 'Array' */
-imagenesArr .forEach( function( elemento ) {
-    console .log( elemento );
-});
+/* Cambia los estilos del elemento */
+encabezado .style .background = '#33C3F0';
+encabezado .style .color = '#FFF';
+encabezado .style .padding = '20px';
+
+// Cambia el contenido del elemento (también se puede usar: textContent)
+encabezado .innerText = 'Los mejores cursos'; 
+
+/* Imprime el contenido final del elemento */
+console .log( 'Finalmente: ',  encabezado .innerText );         // 'Los mejores cursos'
