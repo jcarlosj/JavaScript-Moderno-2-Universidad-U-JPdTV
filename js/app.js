@@ -1,50 +1,30 @@
-/* Seleccionando un elemento de JavaScript (usando Query Selector) retornando un solo valor
-  -----------------------------------------------------------------------------------------
-   1. Permite que podamos seleccionar un elemento por ID o por CLASS 
-   2. Cuando selecionamos una clase que está en varios elementos 'querySelector'
-      solo selecciona el primero que encuentre */
+/* Seleccionando múltiples elementos de JavaScript */
+const enlaces = document .getElementsByClassName( 'enlace' );           // Solo el nombre de la clase 'enlace'
+let enlace, enlacesArr; 
 
-/* ---- SELECCIÓN UN ELEMENTO (Retorna un elemento) ---- */
+/* Obtenemos un elemento de la colección de elementos*/ 
+/* FORMA 1 */ 
+enlace = enlaces[ 4 ] ;  
+console .log( 'enlaces[4] ', enlace .textContent );             // Temas
+enlace .style .textTransform = 'uppercase';
+enlace .style .fontWeight = 'bold';
+enlace .style .textDecoration = 'underline';
 
-/* Ejemplo 1: Cambiamos los estilos del elemento 'encabezado' */      
-const encabezado = document .querySelector( '#encabezado' );        // Usamos . o # según sea un ID o un CLASS 
+console .log( enlaces );
 
-encabezado .style .color = '#1EAEDB';
-encabezado .style .fontSize = '70px';
-encabezado .style .textTransform = 'lowercase';
-encabezado .style .borderBottom = '5px solid #1EAEDB';
+/* Convierte una Colección a un Array */
+enlacesArr = Array .from( enlaces );
 
-console .log( encabezado );
-
-// Ejemplo 2: Usando 'Nesting' propiedades de CSS 3.0 
-const primerEnlace     = document .querySelector( '#principal a:first-child' ),
-      enlaceEspecifico = document .querySelector( '#principal a:nth-child( 3 )' ),  // 'Aplicaciones Móviles'
-      ultimoEnlace     = document .querySelector( '#principal a:last-child' );
-
-console .log( 'Primer enlace ', primerEnlace );
-console .log( 'Enlace específico ', enlaceEspecifico );
-console .log( 'Último enlace ', ultimoEnlace );      
-
-/* ---- SELECCIÓN DE TODOS LOS ELEMENTOS CON LA MISMA CLASE (Retorna un Array de elementos) ---- */
-
-// Ejemplo 3: Cambiar los enlaces del Footer
-const enlaces = document .querySelectorAll( '.enlace' );
-
-enlaces .forEach( elemento => {
-    elemento .style .textTransform = 'uppercase';
-    elemento .style .fontWeight = 'bold';    
+/* Recorre el array, aplica nuevos estilos a cada enlace */
+enlacesArr .forEach(element => {
+    element .style .color = '#999999';
+    element .style .fontSize = '18px';
 });
 
-console .log( 'Enlaces ', enlaces );
+/* FORMA 2 */
+enlace = document .getElementsByClassName( 'enlace' )[ 4 ];     // Temas
+console .log( 'document.getElementsByClassName("enlace")[4] ', enlace .textContent );
+enlace .style .color = '#333333';
+enlace .innerText = "FAQ's";                     // Cambia 'Temas' por  FAQ's
 
-// Ejemplo 4: Cambiar los enlaces del botón [Agregar al Carrito]
-const enlacesAgregarAlCarrito = document .querySelectorAll( 'div.card a.agregar-carrito' );
 
-enlacesAgregarAlCarrito .forEach( function( elemento ) {
-    elemento .textContent = 'Agregar';
-    elemento .style .fontSize = '22px';
-});
-
-console .log( 'Enlaces ', enlacesAgregarAlCarrito );
-
-/* NOTA: 'Nesting' Es seleccionar elementos padre y luego elementos hijo */
