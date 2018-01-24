@@ -1,11 +1,45 @@
-/* Eliminar elementos con JavaScript */
-const enlaces = document .querySelectorAll( '.enlace' );    // Enlaces del footer
-      navegacion = document .querySelector( '#principal' ); // '#principal' ---> Toda la estructura que referencia este ID   
+/* Agregar/Eliminar clases de los elementos con JavaScript */
+const primerEnlace = document .querySelector( '.enlace' );          // Primer enlace menú principal
 
-console .log( enlaces );
+let atributo;
 
-/* Eliminar elemento (desde el mismo elemento) */
-enlaces[ 0 ] .remove();                     // 'Para Tu Negocio' ---> Se elimina a si mismo 
+console .group( 'Menú principal ' );
+    console .log( 'Primer enlace ', primerEnlace );
 
-/* Eliminar elemento desde su elemento Padre */
-navegacion .removeChild( enlaces[ 2 ] );    // 'Aplicaciones Móviles'
+    console .group( 'ID y Clases iniciales del elemento ' );
+        
+        /* Obtenemos ID y Clases del elemento */
+        atributo = primerEnlace .id;           // Obtiene el id del elemento
+        console .log( 'id ', atributo );
+        atributo = primerEnlace .className;    // Obtiene la clase del elemento
+        console .log( 'className ', atributo );
+        atributo = primerEnlace .classList;    // Obtiene un 'DOMTokenList' del elemento
+        console .log( 'classList ', atributo );
+
+    console .groupEnd();
+
+    console .group( 'Se agregó la clase nueva "nueva-clase" al elemento ' );
+        
+        atributo = primerEnlace .classList .add( 'nueva-clase-1' );   // Agrega la clase 'nueva-clase'
+
+        /* Obtenemos Clases del elemento */
+        atributo = primerEnlace .className;    // Obtiene la clase del elemento
+        console .log( 'className ', atributo );
+        atributo = primerEnlace .classList;    // Obtiene un 'DOMTokenList' del elemento
+        console .log( 'classList ', atributo );
+
+    console .groupEnd();
+
+    console .group( 'Se elimina la clase "enlace" al elemento ' );
+        
+    atributo = primerEnlace .classList .remove( 'enlace' );   // Elimina la clase 'enlace' 
+
+    /* Obtenemos Clases del elemento */
+    atributo = primerEnlace .className;    // Obtiene la clase del elemento
+    console .log( 'className ', atributo );
+    atributo = primerEnlace .classList;    // Obtiene un 'DOMTokenList' del elemento
+    console .log( 'classList ', atributo );
+
+console .groupEnd();
+
+console .groupEnd();
