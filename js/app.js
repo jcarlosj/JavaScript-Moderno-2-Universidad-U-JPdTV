@@ -1,24 +1,21 @@
-/* Creando elementos con JavaScript */
+/* Reemplazando elementos con JavaScript */
+const nuevoEncabezado = document .createElement( 'h2' );    // Crea el elemento 'h2'
 
-// Crea dos elementos 'a'
-const enlace1 = document .createElement( 'a' ),      
-      enlace2 = document .createElement( 'a' );          
-      
-/* Agrega propiedades al elemento para el 'enlace1' */
-enlace1 .id = 'primer-nuevo';                        // Agrega un id al elemento a
-enlace1 .className = 'enlace';                       // Agrega una clase al elemento a       
-enlace1 .setAttribute( 'href', '#' );                // Agrega un href al elemento a
-enlace1 .textContent = 'Primer enlace nuevo';        // Agrega texto al elemento a  ( FORMA 1 )
+/* Agrega propiedades al elemento */
+nuevoEncabezado .id = 'encabezado';                                                                // Agrega un id al elemento 'h2'
+nuevoEncabezado .appendChild( document .createTextNode( 'Los mejores cursos del 2018' ) );         // Agrega el texto al elemento 'h2'
 
-/* Agrega propiedades al elemento para el 'enlace2' */
-enlace2 .id = 'segundo-nuevo';                       // Agrega un id al elemento a
-enlace2 .className = 'enlace';                       // Agrega una clase al elemento a       
-enlace2 .setAttribute( 'href', '#' );                // Agrega un href al elemento a
-enlace2 .appendChild( document .createTextNode( 'Segundo enlace nuevo' ) );     // Agrega texto al elemento a ( FORMA 2 )
+console .log( 'Nuevo encabezado: ', nuevoEncabezado );
 
-console .log( 'Primer enlace nuevo: ', enlace1 );
-console .log( 'Segundo enlace nuevo: ', enlace2 );
+/* Seleccionamos el nodo (o elemento) que vamos a cambiar */
+const encabezadoAnterior = document .querySelector( '#encabezado' );
+console .log( 'Encabezado anterior ', encabezadoAnterior );
 
-/* Agregamos los enlaces como elemento hijo en el DOM */
-document .querySelector( '#secundaria' ) .appendChild( enlace1 );
-document .querySelector( '#secundaria' ) .appendChild( enlace2 );
+/* Nos posicionamos en el nodo padre */
+const elementoPadre = encabezadoAnterior .parentElement;                // 'lista-cursos'
+console .log( 'Padre de "encabezado anterior" ', elementoPadre );
+
+/* Reemplazamos el encabezado */
+elementoPadre .replaceChild( nuevoEncabezado, encabezadoAnterior );
+
+// Reemplaza el elemento anterior por el nuevo que hemos creado
