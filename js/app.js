@@ -1,36 +1,24 @@
-/* Traversing en JavaScript (entre nodos hermanos) */
-const enlaces = document .querySelectorAll( '.enlace' );       
+/* Creando elementos con JavaScript */
 
-console .log( 'enlaces[ 3 ] ', enlaces[ 3 ] );                                                  // Elemento Actual 'Soporte'
-console .log( 'enlaces[ 3 ] .previousSibling', enlaces[ 3 ] .previousSibling  );                // '#text' ---> Elemento Anterior (Salto de línea en el código)
-console .log( 'enlaces[ 3 ] .previousElementSibling', enlaces[ 3 ] .previousElementSibling );   // Elemento Anterior (Omite Salto de línea en el código)
-console .log( 'enlaces[ 3 ] .nextSibling', enlaces[ 3 ] .nextSibling  );                        // '#text' ---> Elemento Siguiente (Salto de línea en el código)
-console .log( 'enlaces[ 3 ] .nextElementSibling', enlaces[ 3 ] .nextElementSibling );           // Elemento Siguiente (Omite Salto de línea en el código)
-
-
-/* Avanzando entre nodos hermanos */
-let enlaceActual;
-
-console .group( 'Avance entre nodos hermanos (nextElementSibling)' );
-    enlaceActual = enlaces[ 0 ];        
-    console .log( enlaceActual .textContent );      // 'Para tu Negocio'
-
-    enlaceActual = enlaceActual .nextElementSibling .nextElementSibling .nextElementSibling;
-    console .log( enlaceActual .textContent );      // 'Soporte'
-
-    enlaceActual = enlaceActual .nextElementSibling;
-    console .log( enlaceActual .textContent );      // 'Temas'
-
-console .groupEnd();
-
-/* Retrocediendo entre nodos hermanos */
-console .group( 'Retrocede entre nodos hermanos (previousElementSibling)' );
+// Crea dos elementos 'a'
+const enlace1 = document .createElement( 'a' ),      
+      enlace2 = document .createElement( 'a' );          
       
-    console .log( enlaceActual .textContent );      // 'Temas'
+/* Agrega propiedades al elemento para el 'enlace1' */
+enlace1 .id = 'primer-nuevo';                        // Agrega un id al elemento a
+enlace1 .className = 'enlace';                       // Agrega una clase al elemento a       
+enlace1 .setAttribute( 'href', '#' );                // Agrega un href al elemento a
+enlace1 .textContent = 'Primer enlace nuevo';        // Agrega texto al elemento a  ( FORMA 1 )
 
-    enlaceActual = enlaceActual .previousElementSibling;
-    console .log( enlaceActual .textContent );      // 'Soporte'
+/* Agrega propiedades al elemento para el 'enlace2' */
+enlace2 .id = 'segundo-nuevo';                       // Agrega un id al elemento a
+enlace2 .className = 'enlace';                       // Agrega una clase al elemento a       
+enlace2 .setAttribute( 'href', '#' );                // Agrega un href al elemento a
+enlace2 .appendChild( document .createTextNode( 'Segundo enlace nuevo' ) );     // Agrega texto al elemento a ( FORMA 2 )
 
-    enlaceActual = enlaceActual .previousElementSibling .previousElementSibling;
-    console .log( enlaceActual .textContent );      // 'Conviertete en instructor'
-console .groupEnd();
+console .log( 'Primer enlace nuevo: ', enlace1 );
+console .log( 'Segundo enlace nuevo: ', enlace2 );
+
+/* Agregamos los enlaces como elemento hijo en el DOM */
+document .querySelector( '#secundaria' ) .appendChild( enlace1 );
+document .querySelector( '#secundaria' ) .appendChild( enlace2 );
