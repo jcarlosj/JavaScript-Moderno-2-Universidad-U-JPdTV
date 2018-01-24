@@ -1,63 +1,50 @@
-/* Event Listener Click en JavaScript
-   Estos se pueden aplicar a cualquier tipo de elemento */
+/* EventListener (Otros eventos con el mouse) en JavaScript */
+const encabezado = document .querySelector( '#encabezado' ),        // Titulo de cursos
+      enlaces    = document .querySelectorAll( '.enlace' ),         // Todos los enlaces del Footer
+      boton      = document .querySelector( '#vaciar-carrito' ),    // Botón 'Vaciar Carrito'
+      buscador   = document .querySelector( '#buscador' ),          // Campo del buscador
+      divCarritoVacio = document .querySelector( '#carrito .vacio' );
+      iconoCarrito = document .querySelector( '#img-carrito' );
 
-// FORMA 1: 
-// Seleccionamos el buscador y agregamos el Evento Click 
-document .querySelector( '#submit-buscador' ) .addEventListener( 'click', function( event ) {
-    let elemento;
-    
-    event .preventDefault();        // Estamos previniendo la acción por default del navegador
-                                    // Sirve para hacer cosas antes de lanzar la acción del formulario
-                                    // Por ejemplo: hacer Validaciones de los campos entre muchas otras cosas.
-                                
-    console .group( 'Búscador' );
-        elemento = event;
-        console .log( 'event ', elemento );
-        elemento = event .target;
-        console .log( 'event.target ', elemento );
-        elemento = event .target .id;
-        console .log( 'event.target.id ', elemento );
-        elemento = event .target .className;
-        console .log( 'event.target.className ', elemento );
-        elemento = event .target .innerText;
-        console .log( 'event.target.innerText ', elemento );
-    console .groupEnd();
+console .group( 'Botón Vaciar Carrito' );      
+    /* Agregamos el evento 'dblclick' al botón (Doble Click) */
+    boton .addEventListener( 'dblclick', obtenerEvento );
+console .groupEnd();
 
-    alert( 'Buscando cursos... ');
-});
+console .group( 'Enlace "Para Tu Negocio"' );
+    /* Agregamos el evento 'doble' al primer enlace */
+    console .log( enlaces[ 0 ] );
+    enlaces[ 0 ] .addEventListener( 'click', obtenerEvento );
+console .groupEnd();
 
-// FORMA 2: 
+console .group( 'Botón Vaciar Carrito' );
+    /* Agregamos el evento 'mouseenter' al Botón Vaciar Carrito */
+    buscador .addEventListener( 'mouseenter', obtenerEvento );      // Cuando el mouse entra al elemento
+    /* Agregamos el evento 'mouseleave' al Botón Vaciar Carrito */
+    buscador .addEventListener( 'mouseleave', obtenerEvento );      // Cuando el mouse sale del elemento
+console .groupEnd();
 
-// Creamos la función aparte
-function ejecutarBoton( event ) {
-    let elemento;
+console .group( 'Carrito Vacio' );
+    /* Agregamos el evento 'mouseover' al Div Carrito Vacio. Similar a 'mouseenter' */
+    divCarritoVacio .addEventListener( 'mouseover', obtenerEvento );        // Cuando se pone el mouse sobre el elemento
+    /* Agregamos el evento 'mouseout' al Div Carrito Vacio. Similar a 'mouseleave' */
+    divCarritoVacio .addEventListener( 'mouseout', obtenerEvento );        // Cuando se saca el mouse sobre el elemento
+console .groupEnd();
 
-    event .preventDefault();
+console .group( 'Icono del Carrito' );
+    /* Agregamos el evento 'mousedown' al Icono del Carrito. (Cuando presiono el botón) */
+    iconoCarrito .addEventListener( 'mousedown', obtenerEvento );        // Cuando se presiona el botón del mouse sobre el elemento
+    /* Agregamos el evento 'mouseup' al Icono del Carrito. (Cuando suelto el botón) */
+    iconoCarrito .addEventListener( 'mouseup', obtenerEvento );        // Cuando se suelta el botón del mouse sobre el elemento
+console .groupEnd();
 
-    console .group( 'Botón' );
-        elemento = event;
-        console .log( 'event ', elemento );
-        elemento = event .target;
-        console .log( 'event.target ', elemento );
-        elemento = event .target .id;
-        console .log( 'event.target.id ', elemento );
-        elemento = event .target .className;
-        console .log( 'event.target.className ', elemento );
-        elemento = event .target .innerText;
-        console .log( 'event.target.innerText ', elemento );
-    console .groupEnd();
-    
-    alert( 'Agregando al carrito... ');
-}
+console .group( 'Encabezado "Cursos En Línea"' );
+    /* Agregamos el evento 'mousemove' al Encabezado. (Todo el movimiento dentro del elemento) */
+    encabezado .addEventListener( 'mousemove', obtenerEvento );        // Todo el movimiento del mouse dentro del elemento
+console .groupEnd();
 
-// Seleccionamos el botón en nuestro caso
-const botonAgregarCarrito = document .querySelector( '.agregar-carrito' );      // Selecciono el primer botón de 'Agregar al carrito'
+/* Creamos una función que capture el evento */
+function obtenerEvento( evento ) {
+    console .log( `evento.type: ${ evento .type } ` );
+}      
 
-// Agregamos el Event Listener Click al Botón y asignamos la función
-botonAgregarCarrito .addEventListener( 'click', ejecutarBoton );
-
-/* Event Listener en el Titulo de los cursos */
-document .querySelector( '#encabezado' ) .addEventListener( 'click', function( e ) {
-    console .log( 'Antes -> ', e .target .innerText );
-    console .log( 'Ahora -> ', e .target .innerText = 'Nuevos cursos para 2018' );
-});
