@@ -1,32 +1,36 @@
-/* Traversing en JavaScript (del Hijo al Padre) */
+/* Traversing en JavaScript (entre nodos hermanos) */
 const enlaces = document .querySelectorAll( '.enlace' );       
 
-console .log( 'enlaces[0] ', enlaces[ 0 ] );                                // Obtiene el enlace 
-console .log( 'enlaces[0].parentNode ', enlaces[ 0 ] .parentNode );         // Obtiene el elemento padre del enlace
-console .log( 'enlaces[0].parentElement ', enlaces[ 0 ] .parentElement );   // Obtiene el elemento padre del enlace (Forma recomendada)
-console .log( 'enlaces[0].parentElement ', enlaces[ 0 ] .parentElement .parentNode );   // Obtiene el elemento padre del enlace
-console .log( 'enlaces[0].parentElement ', enlaces[ 0 ] .parentElement .parentElement );   // Obtiene el elemento padre del elemento padre del enlace
+console .log( 'enlaces[ 3 ] ', enlaces[ 3 ] );                                                  // Elemento Actual 'Soporte'
+console .log( 'enlaces[ 3 ] .previousSibling', enlaces[ 3 ] .previousSibling  );                // '#text' ---> Elemento Anterior (Salto de línea en el código)
+console .log( 'enlaces[ 3 ] .previousElementSibling', enlaces[ 3 ] .previousElementSibling );   // Elemento Anterior (Omite Salto de línea en el código)
+console .log( 'enlaces[ 3 ] .nextSibling', enlaces[ 3 ] .nextSibling  );                        // '#text' ---> Elemento Siguiente (Salto de línea en el código)
+console .log( 'enlaces[ 3 ] .nextElementSibling', enlaces[ 3 ] .nextElementSibling );           // Elemento Siguiente (Omite Salto de línea en el código)
 
-/* NOTA: Se puede ir del Hijo al Padre cuanto lo permita la estructura del DOM */ 
 
-/* Implementamos algo en la vista */
-const cursos = document .querySelectorAll( '.card' );
+/* Avanzando entre nodos hermanos */
+let enlaceActual;
 
-console .log( 
-    'cursos[ 0 ] .parentElement .style .border = "3px solid red" ', 
-    cursos[ 0 ] .parentElement .style .border = '3px solid red'                                     // Enlace que rodea el Card      
-);                      
-console .log( 
-    'cursos[ 0 ] .parentElement .parentElement.style .border = "3px solid blue"', 
-    cursos[ 0 ] .parentElement .parentElement.style .border = '3px solid blue'                      // Primera Fila de Cards    
-);   
-console .log( 
-    'cursos[ 0 ] .parentElement .parentElement .parentElement.style .border = "3px solid green"', 
-    cursos[ 0 ] .parentElement .parentElement .parentElement.style .border = '3px solid green'      // Todos los Cards (includo el título) 
-);         
+console .group( 'Avance entre nodos hermanos (nextElementSibling)' );
+    enlaceActual = enlaces[ 0 ];        
+    console .log( enlaceActual .textContent );      // 'Para tu Negocio'
 
-/* Cambiar el titulo de los cursos */
-console .log(
-    'Cambia el título',
-    cursos[ 0 ] .parentElement .parentElement .parentElement .children[ 0 ] .textContent = 'Courses Online'
-);
+    enlaceActual = enlaceActual .nextElementSibling .nextElementSibling .nextElementSibling;
+    console .log( enlaceActual .textContent );      // 'Soporte'
+
+    enlaceActual = enlaceActual .nextElementSibling;
+    console .log( enlaceActual .textContent );      // 'Temas'
+
+console .groupEnd();
+
+/* Retrocediendo entre nodos hermanos */
+console .group( 'Retrocede entre nodos hermanos (previousElementSibling)' );
+      
+    console .log( enlaceActual .textContent );      // 'Temas'
+
+    enlaceActual = enlaceActual .previousElementSibling;
+    console .log( enlaceActual .textContent );      // 'Soporte'
+
+    enlaceActual = enlaceActual .previousElementSibling .previousElementSibling;
+    console .log( enlaceActual .textContent );      // 'Conviertete en instructor'
+console .groupEnd();
