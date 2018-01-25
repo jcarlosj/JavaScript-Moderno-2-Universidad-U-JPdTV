@@ -1,10 +1,10 @@
-/* Eventos para los elementos INPUT 'focus' en JavaScript 
-   Registra cada que damos click dentro del input y nos posicionamos dentro del input
-   se dice entonces que tenemos el foco */
+/* Eventos para los elementos INPUT 'blur' en JavaScript 
+   Opuesto al 'focus' Registra cada que damos click fuera del input y nos posicionamos fuera del input
+   se dice entonces que perdimos el foco */
 const buscador   = document .querySelector( '#buscador' );          // Campo del buscador
 
-/* Implementa el Evento 'focus' en el input de búsqueda */
-buscador .addEventListener( 'focus', obtenerEvento );
+/* Implementa el Evento 'blur' en el input de búsqueda */
+buscador .addEventListener( 'blur', obtenerEvento );
 
 /* Creamos una función que capture el evento */
 function obtenerEvento( evento ) {
