@@ -1,14 +1,18 @@
-/* Eventos para los elementos SELECT 'change' en JavaScript 
-   Detecta el cambio de selección de un campo SELECT */
-const servicios = document .querySelector( '#servicios' );          // Campo SELECT
+/* Event Bubbling (Burbuja de Eventos) */
 
-/* Implementa el Evento 'input' en el input de búsqueda */
-servicios .addEventListener( 'change', obtenerEvento );
+const card = document .querySelector( '.card' ),                            // Selecciona elemento primera tarjeta
+      infoCard = document .querySelector( '.info-card' ),                   // Selecciona elemento información de la primera tarjeta
+      botonAgregarCarrito = document .querySelector( '.agregar-carrito' );  // Selecciona elemento del botón de la primera tarjeta 
 
-/* Creamos una función que capture el evento */
-function obtenerEvento( evento ) {
-    //document .querySelector( '#encabezado' ) .innerText = servicios .value;
-    console .log( servicios .value );
-    console .log( `evento.type: ${ evento .type } ` );
-}      
+/* El 'Event Bubbling' es la propagación de eventos en elementos que se contienen los unos a los otros */
+card .addEventListener( 'click', function() {                   // Dispara el evento para: card  (Propagación del Evento) 
+    console .log( 'Click en Card' );
+});
 
+infoCard .addEventListener( 'click', function() {               // Dispara el evento para: infoCard, card  (Propagación del Evento) 
+    console .log( 'Click en Información del Curso' );           
+});
+
+botonAgregarCarrito .addEventListener( 'click', function() {    // Dispara el evento para: botonAgregarCarrito, infoCard, card (Propagación del Evento) 
+    console .log( 'Click en Botón Agregar al Carrito' );        
+});
