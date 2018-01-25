@@ -1,10 +1,10 @@
-/* Eventos para los elementos INPUT 'paste' en JavaScript 
-   Cuando pegamos contenido que se encuentra dentro del input ya sea 
-   a través del shortcut (Ctrl+V) o a través del menú contextual */
+/* Eventos para los elementos INPUT 'input' en JavaScript 
+   Detecta todo el conjunto de eventos relacionadas con el
+   input: keydown, keyup, keypress, cut, paste */
 const buscador   = document .querySelector( '#buscador' );          // Campo del buscador
 
-/* Implementa el Evento 'paste' en el input de búsqueda */
-buscador .addEventListener( 'paste', obtenerEvento );
+/* Implementa el Evento 'input' en el input de búsqueda */
+buscador .addEventListener( 'input', obtenerEvento );
 
 /* Creamos una función que capture el evento */
 function obtenerEvento( evento ) {
