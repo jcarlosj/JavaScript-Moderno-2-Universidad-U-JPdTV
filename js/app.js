@@ -1,10 +1,10 @@
-/* Eventos para los elementos INPUT 'copy' en JavaScript 
-   Cuando copiamos contenido que se encuentra dentro del input ya sea 
-   a través del shortcut (Ctrl+C) o a través del menú contextual */
+/* Eventos para los elementos INPUT 'paste' en JavaScript 
+   Cuando pegamos contenido que se encuentra dentro del input ya sea 
+   a través del shortcut (Ctrl+V) o a través del menú contextual */
 const buscador   = document .querySelector( '#buscador' );          // Campo del buscador
 
-/* Implementa el Evento 'copy' en el input de búsqueda */
-buscador .addEventListener( 'copy', obtenerEvento );
+/* Implementa el Evento 'paste' en el input de búsqueda */
+buscador .addEventListener( 'paste', obtenerEvento );
 
 /* Creamos una función que capture el evento */
 function obtenerEvento( evento ) {
