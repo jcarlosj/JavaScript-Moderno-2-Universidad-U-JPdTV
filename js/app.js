@@ -1,15 +1,14 @@
-/* Eventos para los elementos INPUT 'input' en JavaScript 
-   Detecta todo el conjunto de eventos relacionadas con el
-   input: keydown, keyup, keypress, cut, paste */
-const buscador   = document .querySelector( '#buscador' );          // Campo del buscador
+/* Eventos para los elementos SELECT 'change' en JavaScript 
+   Detecta el cambio de selección de un campo SELECT */
+const servicios = document .querySelector( '#servicios' );          // Campo SELECT
 
 /* Implementa el Evento 'input' en el input de búsqueda */
-buscador .addEventListener( 'input', obtenerEvento );
+servicios .addEventListener( 'change', obtenerEvento );
 
 /* Creamos una función que capture el evento */
 function obtenerEvento( evento ) {
-    //document .querySelector( '#encabezado' ) .innerText = buscador .value;
-    console .log( buscador .value );
+    //document .querySelector( '#encabezado' ) .innerText = servicios .value;
+    console .log( servicios .value );
     console .log( `evento.type: ${ evento .type } ` );
 }      
 
